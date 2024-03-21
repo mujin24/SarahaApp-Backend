@@ -1,0 +1,28 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "ES2022",
+    "sourceMap": true,
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "skipLibCheck": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "extendedDiagnostics": false,
+    "forceConsistentCasingInFileNames": true,
+    "strictFunctionTypes": true,
+    "rootDir": "./TS",
+    "outDir": "./build"
+  },
+  "include": ["TS"],
+  "exclude": ["node_modules", "build"]
+}

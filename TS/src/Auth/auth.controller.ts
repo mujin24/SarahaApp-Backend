@@ -1,19 +1,19 @@
-import User from "../../Database/models/user.model.js";
-import Token from "../../Database/models/token.model.js";
-import asyncHandler from "../../Middleware/asyncHandler.js";
-import appError from "../../utils/appError.js";
-import { httpStatusText } from "../../utils/httpStatusText.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { generateToken } from "../../Middleware/jsonwebtoken.js";
-import { sendMail } from "../../services/email/sendMail.js";
-import {
-  signupTemplate,
-  resetPasswordTemplate,
-} from "../../services/email/emailTemplates.js";
 import crypto from "node:crypto";
-import { isTokenValid } from "../../utils/isValidToken.js";
-
+import Token from "../../Database/models/token.model";
+import User from "../../Database/models/user.model";
+import asyncHandler from "../../Middleware/asyncHandler";
+import { generateToken } from "../../Middleware/jsonwebtoken";
+import {
+  resetPasswordTemplate,
+  signupTemplate,
+} from "../../services/email/emailTemplates";
+import { sendMail } from "../../services/email/sendMail";
+import * as express from "express";
+import appError from "../../utils/appError";
+import { httpStatusText } from "../../utils/httpStatusText";
+import { isTokenValid } from "../../utils/isValidToken";
 export const signup = asyncHandler(async (req, res, next) => {
   const { userName, email, password, gender } = req.body;
 

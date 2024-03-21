@@ -1,5 +1,5 @@
-import mongoose, { model, Schema } from "mongoose";
-
+import * as mongoose from "mongoose";
+import { model, Schema } from "mongoose";
 const userSchema = new Schema(
   {
     userName: {
@@ -14,7 +14,7 @@ const userSchema = new Schema(
     profilePic: {
       secure_url: {
         type: String,
-        default: process.env.DEFAULT_PROFILE_PICTURE,
+        default: process.env["DEFAULT_PROFILE_PICTURE"],
       },
       public_id: {
         type: String,
@@ -33,6 +33,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = mongoose.models.User || model("User", userSchema);
+const User = mongoose.models["User"] || model("User", userSchema);
 
 export default User;

@@ -1,10 +1,11 @@
-import { httpStatusText } from "../utils/httpStatusText.js";
-import authRouter from "./Auth/auth.router.js";
-import messageRouter from "./Message/message.router.js";
-import userRouter from "./User/user.router.js";
-import logger from "../utils/logger.js";
-
-const appRouter = (app, express) => {
+import * as express from "express";
+import { NextFunction, Request, Response ,Errback} from "express";
+import { httpStatusText } from "../utils/httpStatusText";
+import logger from "../utils/logger";
+import authRouter from "./Auth/auth.router";
+import messageRouter from "./Message/message.router";
+import userRouter from "./User/user.router";
+const appRouter = (app: express.Express) => {
   app.use(express.json());
   app.use("/uploads", express.static("uploads"));
 
@@ -42,7 +43,7 @@ const appRouter = (app, express) => {
   });
 
   // Global Error Handler
-  app.use((error, req, res, next) => {
+  app.use((error, req: Request, res: Response, next: NextFunction) => {
     const { message, statusCode, statusText } = error;
 
     res.status(statusCode || 500).json({

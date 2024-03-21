@@ -1,13 +1,18 @@
+import * as express from "express";
 import Message from "../../Database/models/message.model.js";
 import User from "../../Database/models/user.model.js";
 import asyncHandler from "../../Middleware/asyncHandler.js";
 import appError from "../../utils/appError.js";
 import { httpStatusText } from "../../utils/httpStatusText.js";
 import { isValidObjectId } from "../../utils/isValidObjectId.js";
-
-const sendMessage = async (req, res, next, senderUser) => {
+const sendMessage = async (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction,
+  senderUser
+) => {
   const content = req.body.content;
-  const receiverUser = req.params.receiver;
+  const receiverUser = req.params["receiver"];
 
   const receiver = await User.findOne({ userName: receiverUser });
 

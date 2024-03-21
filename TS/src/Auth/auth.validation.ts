@@ -4,9 +4,7 @@ export const signupSchema = Joi.object({
   userName: Joi.string().alphanum().min(5).max(15),
   password: Joi.string()
     .pattern(
-      new RegExp(
-        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$"
-      )
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
     )
     .required()
     .messages({
